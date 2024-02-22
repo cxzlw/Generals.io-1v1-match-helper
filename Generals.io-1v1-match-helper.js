@@ -497,6 +497,9 @@ function main(){
 							star
 						</div>
 						<div class = "Sniper-table_cell Sniper-header">
+							mode
+						</div>
+						<div class = "Sniper-table_cell Sniper-header">
 							last
 						</div>
 					</div>
@@ -522,7 +525,10 @@ function main(){
 								${user.star}
 							</div>
 							<div class = "Sniper-table_cell ${user.isfriend ? "Sniper-friendcell" : ""}">
-								${isNaN(user.time_past) ? user.type : time_past_to_string(user.time_past)}
+								${user.type}
+							</div>
+							<div class = "Sniper-table_cell ${user.isfriend ? "Sniper-friendcell" : ""}">
+								${time_past_to_string(user.time_past)}
 							</div>
 						</div>
 					`;
@@ -577,7 +583,7 @@ function main(){
 							// throw "cant find any replays for user " + name;
 						} else {
 							tmp = tmp[0];
-							data[name] = {star: current_star, time: tmp.type === '1v1' ? tmp.started + (tmp.turns - 1) * 500 : NaN};
+							data[name] = {star: current_star, time: tmp.started + (tmp.turns - 1) * 500};
 							if (tmp.type === '1v1')
 								data[name].type = ONEVONE;
 							else if (tmp.type === '2v2')
